@@ -63,9 +63,14 @@ class Tilemap:
         return rects
 
     def render(self, surf):
+        # for each tile in offgrid tiles
+        # blit onto the surface the asset that corresponds to the type and variant of the tile, at the position of the tile
         for tile in self.offgrid_tiles:
             surf.blit(self.game.assets[tile["type"]][tile["variant"]], tile["pos"])
 
+        # for each loc in tilemap
+        # get the tile found at the loc in the tilemap
+        # blit onto the surface the asset that corresponds to the type and variant of the tile, at the position of the tile multiplied by the tile size
         for loc in self.tilemap:
             tile = self.tilemap[loc]
             surf.blit(
