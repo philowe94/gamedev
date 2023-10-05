@@ -33,6 +33,7 @@ class Tilemap:
                 "pos": (10, 5 + i),
             }
 
+    # given a pixel position, return the tiles around that position
     def tiles_around(self, pos):
         tiles = []
 
@@ -47,6 +48,10 @@ class Tilemap:
             check_loc = (
                 str(tile_loc[0] + offset[0]) + ";" + str(tile_loc[1] + offset[1])
             )
+            if check_loc in self.tilemap:
+                tiles.append(self.tilemap[check_loc])
+
+        return tiles
 
     def physics_rects_around(self, pos):
         rects = []
